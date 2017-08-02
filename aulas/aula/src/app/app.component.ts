@@ -7,19 +7,4 @@ import 'rxjs/add/operator/map';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = "app";
-  fotos: Object[] = [];
-
-  constructor(ajax: Http){
-    ajax.get('http://localhost:3000/v1/fotos')
-    .map(response => response.json())
-    .subscribe(
-      fotosEmJson =>{
-        this.fotos = fotosEmJson
-      },
-      erro => console.log(erro)
-      
-    );
-  }
-}
+export class AppComponent {}

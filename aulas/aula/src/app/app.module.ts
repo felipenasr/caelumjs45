@@ -7,6 +7,8 @@ import { PainelModule } from './painel/painel.module';
 import { AppComponent } from './app.component';
 import { ListagemComponent } from './listagem/listagem.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { routing } from "./app.routes";
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     BrowserModule,
     FotoModule,
     HttpModule,
-    PainelModule
+    PainelModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]

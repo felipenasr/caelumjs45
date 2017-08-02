@@ -1,3 +1,8 @@
-<p>
-  listagem works!
-</p>
+<div class="jumbotron" style="text-align:center">
+  <h1>{{title}}</h1>
+</div>
+
+<painel *ngFor="let foto of fotos" titulo="{{foto.titulo}}" class="col-sm-2">
+  
+  <foto url="{{foto.url}}" titulo="{{foto.titulo}}" ></foto>
+</painel>
