@@ -8,6 +8,14 @@ export class CadastroComponent implements OnInit {
 
   constructor() { }
 
+  cadastrar(submit: Event) {
+    submit.preventDefault();
+
+    console.log('foi');
+    
+    
+  }
+
   ngOnInit() {
   }
 
