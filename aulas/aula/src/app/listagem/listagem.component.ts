@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from "@angular/http";
+import { FotoComponent } from "../foto/foto.component";
 
 @Component({
   selector: 'listagem',
@@ -9,7 +10,7 @@ import { Http } from "@angular/http";
 
 export class ListagemComponent {
   title = "app";
-  fotos: Object[] = [];
+  fotos: FotoComponent[] = [];
 
   constructor(ajax: Http){
     ajax.get('http://localhost:3000/v1/fotos')

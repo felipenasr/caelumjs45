@@ -1,8 +1,37 @@
-<div class="jumbotron" style="text-align:center">
-  <h1>{{title}}</h1>
-</div>
+<header class="jumbotron">
+  <h1 class="text-center">{{title}}</h1>
 
-<painel *ngFor="let foto of fotos" titulo="{{foto.titulo}}" class="col-sm-2">
+</header>
+<div class="container">
+
+  <div class="row">
+
+
+    <div class="col-md-12">
+      <form>
+        <div class="input-group">
+
+          <span class="input-group-btn">
+            <a [routerLink]="['/cadastro']" class="btn btn-primary">Teste</a>
+          </span>
+
+          <input (input)="0" #TextoProcurado type="text" class="form-control">                    
+
+        </div>
+        
+      </form>
+    </div>
+
+
+  </div>
+  <br>
+
+  <div class="row">
   
-  <foto url="{{foto.url}}" titulo="{{foto.titulo}}" ></foto>
-</painel>
+    <painel *ngFor="let foto of fotos | filtroPorTitulo:TextoProcurado.value" titulo="{{foto.titulo}}" class="col-sm-2">
+      
+      <foto url="{{foto.url}}" titulo="{{foto.titulo}}" ></foto>
+    </painel>
+  </div>
+
+</div>
