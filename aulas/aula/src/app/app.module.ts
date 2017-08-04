@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from "@angular/http";
+import { FormsModule } from "@angular/forms";
+
+
 
 import { FotoModule } from './foto/foto.module';
 import { PainelModule } from './painel/painel.module';
@@ -21,7 +24,9 @@ import { routing } from "./app.routes";
     FotoModule,
     HttpModule,
     PainelModule,
-    routing
+    routing,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

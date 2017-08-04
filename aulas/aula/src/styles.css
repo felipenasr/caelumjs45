@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+.panel{
+    height: 180px;
+}
+.panel-body{
+    width: 163px;
+    height: 163px;
+}
+.panel-body img{
+    object-fit: contain;
+    width: 100%;
+    height: 80%;
+    align-content: center;
+    justify-content: center;
+}
