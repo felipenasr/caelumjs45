@@ -5,32 +5,35 @@
 <div class="container">
   <div class="row">
     
-    <form #formCadastro="ngForm" class="col-md-6" (submit)="cadastrar($event)">
+    <form [formGroup]="formCadastro" class="col-md-6" (submit)="cadastrar($event)">
       <div class="form-group">
         <label for="">Titulo</label>
         <input
-          required 
+          formControlName="titulo"
           name="titulo"
-          #titulo = "ngModel"
           [(ngModel)] = "foto.titulo"
           class="form-control">
-          
-          <span *ngIf="titulo.invalid" class="form-control alert-danger">
-          TItulo obrigatorio
-        </span>
+          <div *ngIf="!formCadastro.controls.titulo.valid">
+
+          <span *ngIf="formCadastro.controls.titulo.errors.required" class="form-control alert-danger">
+          Erro
+          </span>
+         <span *ngIf="formCadastro.controls.titulo.errors.minlength" class="form-control alert-danger">
+          Erro
+          </span>
+          </div>
       </div>
       
       
       <div class="form-group">
         <label for="">URL</label>
         <input
-          required
-          #url = "ngModel"
+          formControlName="url"        
           name="url"
           [(ngModel)] = "foto.url"
         class="form-control">
 
-        <span *ngIf="url.invalid" class="form-control alert-danger">
+        <span *ngIf="formCadastro.controls.url.invalid" class="form-control alert-danger">
           URL obrigatorio
         </span>
       </div>
@@ -38,19 +41,14 @@
       <div class="form-group">
         <label for="">Descrição</label>
         <textarea
-          required
-          #descricao = "ngModel"
+           formControlName="descricao"          
            name="descricao"
           [(ngModel)] = "foto.descricao"
         class="form-control">
         </textarea>
-
-        <span *ngIf="descricao.invalid" class="form-control alert-danger">
-          Descrição obrigatorio
-        </span>
       </div>
 
-      <button [disabled]="formCadastro.form.invalid" type="submit" class="btn btn-default">Salvar</button>
+      <button [disabled]="formCadastro.invalid" type="submit" class="btn btn-default">Salvar</button>
 
       <a [routerLink]="['']" class="btn btn-primary">Voltar</a>
     </form>

@@ -1,5 +1,6 @@
 import { Http, Headers } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FotoComponent } from '../foto/foto.component';
 
 
@@ -14,9 +15,19 @@ export class CadastroComponent implements OnInit {
 
 
   http: Http
+  formCadastro: FormGroup
 
-  constructor(conexaoAPi: Http) { 
+
+  constructor(conexaoAPi: Http, formBuilder: FormBuilder) { 
     this.http = conexaoAPi
+
+    this.formCadastro = formBuilder.group({
+      titulo: ['', Validators.compose(
+        [Validators.required, Validators.minLength(4)]
+      )],
+      url: ['', Validators.required],
+      descricao: ['']
+    })
   }
 
   cadastrar(submit: Event) {

@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from "@angular/core";
     templateUrl: './painel.component.html'
 })
 export class PainelComponent implements OnInit{
-    @Input () titulo: string;
+    @Input () titulo: string = '';
 
     constructor(){
     }
