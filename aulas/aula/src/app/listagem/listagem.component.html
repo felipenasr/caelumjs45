@@ -30,7 +30,8 @@
   
     <painel *ngFor="let foto of fotos | filtroPorTitulo:TextoProcurado.value" titulo="{{foto.titulo}}" class="col-sm-2">
       
-      <foto url="{{foto.url}}" titulo="{{foto.titulo}}" ></foto>
+      <foto url="{{foto.url}}" titulo="{{foto.titulo}}"></foto>
+       <button (click)="remover(foto._id)" class="btn btn-danger">btn</button>
     </painel>
   </div>
 

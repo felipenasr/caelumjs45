@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { ListagemComponent } from './listagem/listagem.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { routing } from "./app.routes";
+import { FotoService } from "./foto/foto.service";
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { routing } from "./app.routes";
     ReactiveFormsModule
 
   ],
-  providers: [],
+  providers: [FotoService],
   bootstrap: [AppComponent]
 })
 

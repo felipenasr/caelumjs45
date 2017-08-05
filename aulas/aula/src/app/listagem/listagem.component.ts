@@ -1,6 +1,9 @@
+import { Observable } from 'rxjs';
+import { FotoService } from './../foto/foto.service';
 import { Component, OnInit } from '@angular/core';
 import { Http } from "@angular/http";
 import { FotoComponent } from "../foto/foto.component";
+
 
 @Component({
   selector: 'listagem',
@@ -11,16 +14,29 @@ import { FotoComponent } from "../foto/foto.component";
 export class ListagemComponent {
   title = "app";
   fotos: FotoComponent[] = [];
+  servico: FotoService
 
-  constructor(ajax: Http){
-    ajax.get('http://localhost:3000/v1/fotos')
-    .map(response => response.json())
+  constructor(servico: FotoService){
+    this.servico = servico
+  
+    servico.listar()
     .subscribe(
       fotosEmJson =>{
         this.fotos = fotosEmJson
       },
       erro => console.log(erro)
-      
     );
+
+  }
+
+  remover(id){
+    this.servico.deletar(id)
+              .subscribe(
+                ()=> {
+                  this.fotos = this.fotos.filter(
+                    fotoLista => fotoLista._id != id
+                  )
+                }
+              )
   }
 }

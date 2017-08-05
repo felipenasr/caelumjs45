@@ -1,3 +1,4 @@
+import { FotoService } from './../foto/foto.service';
 import { Http, Headers } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -12,14 +13,13 @@ import { FotoComponent } from '../foto/foto.component';
 export class CadastroComponent implements OnInit {
 
   foto: FotoComponent = new FotoComponent
-
-
-  http: Http
   formCadastro: FormGroup
+  servico: FotoService
 
 
-  constructor(conexaoAPi: Http, formBuilder: FormBuilder) { 
-    this.http = conexaoAPi
+  constructor(conexaoApi: FotoService, formBuilder: FormBuilder) { 
+    
+    this.servico = conexaoApi
 
     this.formCadastro = formBuilder.group({
       titulo: ['', Validators.compose(
@@ -32,16 +32,9 @@ export class CadastroComponent implements OnInit {
 
   cadastrar(submit: Event) {
     submit.preventDefault();
+    this.servico.salvar(this.foto)
 
-    let cabecalho = new Headers()
-    cabecalho.append('Content-Type', 'application/json')
-
-
-    this.http.post(
-      'http://localhost:3000/v1/fotos',
-      JSON.stringify(this.foto) ,
-      { headers: cabecalho }
-    )
+    
     .subscribe(
       () => {
         console.log('cadastrou')
@@ -49,9 +42,9 @@ export class CadastroComponent implements OnInit {
       }
     )
 
-    console.log(this.foto);
     
   }
+
 
   ngOnInit() {
   }
